@@ -1,0 +1,16 @@
+PODS:
+  - InappAlert (0.1.0)
+
+DEPENDENCIES:
+  - InappAlert (from `../`)
+
+EXTERNAL SOURCES:
+  InappAlert:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  InappAlert: 0b2bf31d931fea5109f949037bf01a594d05eda8
+
+PODFILE CHECKSUM: 8140f0484b5a3d96af3bfc154f1cbbd958b42198
+
+COCOAPODS: 1.10.0
