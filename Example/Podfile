@@ -1,0 +1,6 @@
+use_frameworks!
+target 'InappAlert_Tests' do
+  pod 'InappAlert', :path => '../'
+  
+  
+end
