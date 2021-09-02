@@ -51,6 +51,9 @@ public class InappAlert: NSObject {
             self.alertController?.dismiss(animated: true, completion: { () in
                 self.alertController = nil
                 
+                #if DEBUG
+                print("IA IAmessageChange CALL not nil")
+                #endif
                 self.alertController = UIAlertController(title: "", message: msg, preferredStyle: .alert)
                 let indicator = UIActivityIndicatorView(style: .gray)
                 indicator.center = CGPoint(x: 25, y: 30)
@@ -61,6 +64,9 @@ public class InappAlert: NSObject {
                 }
             })
         } else {
+            #if DEBUG
+            print("IA IAmessageChange CALL IAinit")
+            #endif
             self.IAinit(msg)
         }
     }
@@ -86,19 +92,27 @@ public class InappAlert: NSObject {
     }
     public func IAdismiss()
     {
-        if(self.alertController != nil)
-        {
-            self.alertController?.dismiss(animated: true, completion: { () in
-                self.alertController = nil
-            })
-        }
+        DispatchQueue.global().asyncAfter(deadline: .now() + 0.5, execute: {
+            DispatchQueue.main.async {
+                if(self.alertController != nil)
+                {
+                    self.alertController?.dismiss(animated: true, completion: { () in
+                        self.alertController = nil
+                    })
+                }
+            }
+        })
     }
     public func IAdismiss(withHandler ourBlock: @escaping () -> Void)
     {
-        if(self.alertController != nil)
-        {
-            self.alertController?.dismiss(animated: true, completion: ourBlock)
-        }
+        DispatchQueue.global().asyncAfter(deadline: .now() + 0.5, execute: {
+            DispatchQueue.main.async {
+                if(self.alertController != nil)
+                {
+                    self.alertController?.dismiss(animated: true, completion: ourBlock)
+                }
+            }
+        })
     }
     
     deinit {
