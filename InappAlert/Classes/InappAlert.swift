@@ -17,14 +17,12 @@ public class InappAlert: NSObject {
         print("IA init")
         #endif
         self.viewController = viewC
-        
     }
 
-    public func IAinit(_ msg : String)
-    {
+    public func IAinit(_ msg : String) {
         // 닫기 버튼이 없는 팝업 생성
         self.alertController = UIAlertController(title: "", message: msg, preferredStyle: .alert)
-        let indicator = UIActivityIndicatorView(style: .gray)
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         indicator.center = CGPoint(x: 25, y: 30)
         indicator.startAnimating();
         self.alertController!.view.addSubview(indicator)
@@ -32,11 +30,11 @@ public class InappAlert: NSObject {
             viewC.present(self.alertController!, animated: true, completion: nil)
         }
     }
-    public func IAinit(_ msg : String, _ x: CGFloat, _ y: CGFloat)
-    {
+    
+    public func IAinit(_ msg : String, _ x: CGFloat, _ y: CGFloat) {
         // 닫기 버튼이 없는 팝업 생성
         self.alertController = UIAlertController(title: "", message: msg, preferredStyle: .alert)
-        let indicator = UIActivityIndicatorView(style: .gray)
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         indicator.center = CGPoint(x: x, y: y)
         indicator.startAnimating();
         self.alertController!.view.addSubview(indicator)
@@ -44,18 +42,13 @@ public class InappAlert: NSObject {
             viewC.present(self.alertController!, animated: true, completion: nil)
         }
     }
-    public func IAmessageChange(_ msg : String)
-    {
-        if(self.alertController != nil)
-        {
+    
+    public func IAmessageChange(_ msg : String) {
+        if self.alertController != nil  {
             self.alertController?.dismiss(animated: true, completion: { () in
                 self.alertController = nil
-                
-                #if DEBUG
-                print("IA IAmessageChange CALL not nil")
-                #endif
                 self.alertController = UIAlertController(title: "", message: msg, preferredStyle: .alert)
-                let indicator = UIActivityIndicatorView(style: .gray)
+                let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
                 indicator.center = CGPoint(x: 25, y: 30)
                 indicator.startAnimating();
                 self.alertController!.view.addSubview(indicator)
@@ -70,15 +63,13 @@ public class InappAlert: NSObject {
             self.IAinit(msg)
         }
     }
-    public func IAmessageChange(_ msg : String, _ x: CGFloat, _ y: CGFloat)
-    {
-        if(self.alertController != nil)
-        {
+    
+    public func IAmessageChange(_ msg : String, _ x: CGFloat, _ y: CGFloat) {
+        if self.alertController != nil {
             self.alertController?.dismiss(animated: true, completion: { () in
                 self.alertController = nil
-                
                 self.alertController = UIAlertController(title: "", message: msg, preferredStyle: .alert)
-                let indicator = UIActivityIndicatorView(style: .gray)
+                let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
                 indicator.center = CGPoint(x: x, y: y)
                 indicator.startAnimating();
                 self.alertController!.view.addSubview(indicator)
@@ -90,12 +81,11 @@ public class InappAlert: NSObject {
             self.IAinit(msg, x, y)
         }
     }
-    public func IAdismiss()
-    {
+    
+    public func IAdismiss() {
         DispatchQueue.global().asyncAfter(deadline: .now() + 0.5, execute: {
             DispatchQueue.main.async {
-                if(self.alertController != nil)
-                {
+                if self.alertController != nil {
                     self.alertController?.dismiss(animated: true, completion: { () in
                         self.alertController = nil
                     })
@@ -103,12 +93,11 @@ public class InappAlert: NSObject {
             }
         })
     }
-    public func IAdismiss(withHandler ourBlock: @escaping () -> Void)
-    {
+    
+    public func IAdismiss(withHandler ourBlock: @escaping () -> Void) {
         DispatchQueue.global().asyncAfter(deadline: .now() + 0.5, execute: {
             DispatchQueue.main.async {
-                if(self.alertController != nil)
-                {
+                if self.alertController != nil {
                     self.alertController?.dismiss(animated: true, completion: ourBlock)
                 }
             }
@@ -121,5 +110,4 @@ public class InappAlert: NSObject {
         #endif
         self.alertController = nil
     }
-
 }
