@@ -22,7 +22,7 @@ public class InappAlert: NSObject {
     public func IAinit(_ msg : String) {
         // 닫기 버튼이 없는 팝업 생성
         self.alertController = UIAlertController(title: "", message: msg, preferredStyle: .alert)
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let indicator = UIActivityIndicatorView(style: .gray)
         indicator.center = CGPoint(x: 25, y: 30)
         indicator.startAnimating();
         self.alertController!.view.addSubview(indicator)
@@ -34,7 +34,7 @@ public class InappAlert: NSObject {
     public func IAinit(_ msg : String, _ x: CGFloat, _ y: CGFloat) {
         // 닫기 버튼이 없는 팝업 생성
         self.alertController = UIAlertController(title: "", message: msg, preferredStyle: .alert)
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let indicator = UIActivityIndicatorView(style: .gray)
         indicator.center = CGPoint(x: x, y: y)
         indicator.startAnimating();
         self.alertController!.view.addSubview(indicator)
@@ -48,7 +48,7 @@ public class InappAlert: NSObject {
             self.alertController?.dismiss(animated: true, completion: { () in
                 self.alertController = nil
                 self.alertController = UIAlertController(title: "", message: msg, preferredStyle: .alert)
-                let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+                let indicator = UIActivityIndicatorView(style: .gray)
                 indicator.center = CGPoint(x: 25, y: 30)
                 indicator.startAnimating();
                 self.alertController!.view.addSubview(indicator)
@@ -69,7 +69,7 @@ public class InappAlert: NSObject {
             self.alertController?.dismiss(animated: true, completion: { () in
                 self.alertController = nil
                 self.alertController = UIAlertController(title: "", message: msg, preferredStyle: .alert)
-                let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+                let indicator = UIActivityIndicatorView(style: .gray)
                 indicator.center = CGPoint(x: x, y: y)
                 indicator.startAnimating();
                 self.alertController!.view.addSubview(indicator)
