@@ -10,7 +10,7 @@ import UIKit
 public class InappAlert: NSObject {
     public var alertController: UIAlertController? = nil
     private var viewController: UIViewController? = nil
-    
+       
     public init(_ viewC : UIViewController) {
         super.init()
         #if DEBUG
